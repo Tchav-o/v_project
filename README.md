@@ -1,4 +1,5 @@
 Just go to public/index.php file.
+10 is joker field!
 Click spin and enjoy :)
 
 
