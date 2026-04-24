@@ -19,7 +19,9 @@ final class SlotGame {
   }
 
   public function spin(): array {
-    $b=$this->env['BET_PER_LINE']; $l=$this->env['LINES_COUNT']; $t=$b*$l;
+    $b=$this->env['BET_PER_LINE']; 
+    $l=$this->env['LINES_COUNT']; 
+    $t=$b*$l;
     [$grid,$stops]=$this->makeGrid();
     $specials=$this->find($grid,$this->env['SPECIAL']);
     $chosen=null; $final=$grid;
@@ -28,9 +30,14 @@ final class SlotGame {
       foreach($this->env['NORMALS'] as $c){
         $g2=$this->transform($grid,$this->env['SPECIAL'],$c);
         $sc=$this->evaluate($g2,$b);
-        if($sc['totalWin']>$best){$best=$sc['totalWin'];$bestS=$c;$bestG=$g2;}
+        if($sc['totalWin']>$best){
+          $best=$sc['totalWin'];
+          $bestS=$c;
+          $bestG=$g2;
+        }
       }
-      $chosen=$bestS; $final=$bestG;
+      $chosen=$bestS; 
+      $final=$bestG;
     }
     $score=$this->evaluate($final,$b);
     return [
